@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 # Project Thalamus (@ccbaguley) | MIT License | Single-File RAM Sanctuary
-import hashlib, math, os, sys, time
+import hashlib
+import math
+import os
+import sys
+import time
+
+
+def _clip(val, low, high):
+    return max(low, min(high, float(val)))
 
 
 class SovereignCompassionGate:
@@ -53,6 +61,7 @@ class SovereignCompassionGate:
             "guidance": "Balanced, good-faith interaction. Empathy and sympathy flow naturally.",
         }
 
+
 class DarvoPhaseShield:
     """Pillar 7: DARVO (Deny, Attack, Reverse Victim & Offender) Phase-Inversion Shield.
     Detects narrative polarity flips and stabilizes user reactions by dissolving
@@ -92,6 +101,7 @@ class DarvoPhaseShield:
             "guidance": "No severe polarity flip detected. Stay anchored in your own pace.",
         }
 
+
 class ElvishSanctuaryMesh:
     """Pillar 5: Elvish Harmonic Community Mesh.
     Non-violent Lenz Veil perimeter deflection, zero-detail Canopy Rest lanterns
@@ -129,11 +139,6 @@ class ElvishSanctuaryMesh:
         gift = max(0.0, float(goodness_yield))
         self.commons_pool += gift
         return {"contributed": round(gift, 2), "commons_total": round(self.commons_pool, 2)}
-
-
-
-def _clip(val, low, high):
-    return max(low, min(high, float(val)))
 
 
 class LenzMycelialAlchemist:
@@ -181,11 +186,6 @@ class LenzMycelialAlchemist:
             "sludge_purged": round(sludge_purged, 2),
             "goodness_yield": round(goodness_yield, 2),
         }
-
-
-
-def _clip(val, low, high):
-    return max(low, min(high, float(val)))
 
 
 class MbtiEvolutionTelemetry:
@@ -253,7 +253,6 @@ class MbtiEvolutionTelemetry:
         }
 
 
-
 class MithrilAntiSabotageGuard:
     """Pillar 6: Mithril Integrity & Anti-Sabotage Layer.
     Provides SHA-256 self-verification against coercive code tampering and
@@ -295,6 +294,7 @@ class MithrilAntiSabotageGuard:
             "guidance": "Authentic human cadence verified.",
         }
 
+
 class NaturalConsequenceMirror:
     """Pillar 11: Mirror of Natural Consequence & Anti-Subsidy Shield.
     Stops emotional/practical subsidies for willfully oblivious, bad-faith actors
@@ -331,11 +331,6 @@ class NaturalConsequenceMirror:
         }
 
 
-
-def _clip(val, low, high):
-    return max(low, min(high, float(val)))
-
-
 class ThalamicRelayCore:
     """Pillar 1: Neuro-Physical Thalamic Relay.
     Models emotional settling via a Damped Harmonic Oscillator and calculates
@@ -367,9 +362,6 @@ class ThalamicRelayCore:
             "clarity_percent": round(clarity * 100.0, 1),
             "action_readiness": round(readiness, 2),
         }
-
-def _clip(val, low, high):
-    return max(low, min(high, float(val)))
 
 
 class NeuroPlasticitySanctuary:
@@ -416,6 +408,7 @@ class NeuroPlasticitySanctuary:
             ),
         }
 
+
 class ReticularNullGate:
     """Pillar 10: Thalamic Reticular Nucleus Null-Gate.
     Locks out enemies and destructive negative feedback at the outer perimeter
@@ -445,9 +438,6 @@ class ReticularNullGate:
             "energy_expended": 0.1,
             "guidance": "Trusted, good-faith signal verified. Safe to consider calmly.",
         }
-
-def _clip(val, low, high):
-    return max(low, min(high, float(val)))
 
 
 class ShaolinDisciplineForge:
@@ -490,9 +480,6 @@ class ShaolinDisciplineForge:
             ),
         }
 
-def _clip(val, low, high):
-    return max(low, min(high, float(val)))
-
 
 class TraumaMemorySanctuary:
     """Pillar 3: Trauma, Memory-Fog & Wound Alkalinity Sanctuary.
@@ -527,8 +514,8 @@ class TraumaMemorySanctuary:
         vfa_ratio = pain / support
         needs_alkaline_rest = vfa_ratio > 0.30
 
-        cognitive_pct = round((1.0 - fog) * 100.0, 1)
-        somatic_pct = round(fog * 100.0, 1)
+        cognitive_pct = round((1.0 - fog) * 100.0, 1.0)
+        somatic_pct = round(fog * 100.0, 1.0)
 
         return {
             "vfa_acidity_ratio": round(vfa_ratio, 2),
@@ -541,11 +528,6 @@ class TraumaMemorySanctuary:
                 else "Equilibrium stable. Ready for gentle reflection or service."
             ),
         }
-
-import os
-import sys
-import time
-
 
 
 class ProjectThalamusOS:
@@ -630,10 +612,10 @@ class ProjectThalamusOS:
         island = self.trauma.check_trigger_islanding(trig, trigger_onset_speed=1.2)
 
         if "OPEN" in island["islanding_relay"]:
-            print(f"\n  [EE29 SUB-CYCLE ISLANDING RELAY OPEN - Surge: {island["surge_level"]}]")
-            self.slow_print(f"  {island["guidance"]}")
+            print(f"\n  [EE29 SUB-CYCLE ISLANDING RELAY OPEN - Surge: {island['surge_level']}]")
+            self.slow_print(f"  {island['guidance']}")
             canopy = self.mesh.broadcast_canopy_status(True, 0.4)
-            print(f"  Elvish Mesh Lantern: [{canopy["lantern_signal"]}] (Zero private details shared)")
+            print(f"  Elvish Mesh Lantern: [{canopy['lantern_signal']}] (Zero private details shared)")
             if input("  Run a 2-cycle 145 Hz grounding breath? (y/n) [y]: ").strip().lower() != "n":
                 self.helmholtz_pacer(2)
             return
@@ -644,12 +626,15 @@ class ProjectThalamusOS:
         support = 7.5 if support is None else max(support, 0.5)
 
         alk = self.trauma.check_wound_alkalinity(pain, support, memory_fog)
-        print(f"\n  [Wound VFA Ratio: {alk["vfa_acidity_ratio"]} | Cognitive/Somatic: {alk["cognitive_capacity_percent"]}% / {alk["somatic_anchor_percent"]}%]")
-        self.slow_print(f"  {alk["guidance"]}")
+        print(
+            f"\n  [Wound VFA Ratio: {alk['vfa_acidity_ratio']} | "
+            f"Cognitive/Somatic: {alk['cognitive_capacity_percent']}% / {alk['somatic_anchor_percent']}%]"
+        )
+        self.slow_print(f"  {alk['guidance']}")
 
         if alk["sour_guard_active"]:
             forge = self.shaolin.transmute_pain(pain, breath_quality=7.0, vfa_acidity_ratio=alk["vfa_acidity_ratio"])
-            self.slow_print(f"  [Shaolin Yi]: {forge["guidance"]}")
+            self.slow_print(f"  [Shaolin Yi]: {forge['guidance']}")
             return
 
         tox = self.ask_float("\n5. External friction, DARVO, or hostility today? (0=none, 10=heavy)", 2.0)
@@ -659,23 +644,26 @@ class ProjectThalamusOS:
             is_darvo = input("  Are they denying reality, attacking, or flipping victim/offender? (y/n) [n]: ").strip().lower() == "y"
             if is_darvo:
                 d_res = self.darvo.evaluate_interaction(8.0, tox, 8.0, urge_to_explain=3.0)
-                print(f"\n  [DARVO PHASE-INVERSION SHIELD - {d_res["posture"]}]")
-                self.slow_print(f"  {d_res["guidance"]}")
+                print(f"\n  [DARVO PHASE-INVERSION SHIELD - {d_res['posture']}]")
+                self.slow_print(f"  {d_res['guidance']}")
                 return
 
             can_leave = input("  Can you peacefully step back or disengage? (y/n) [y]: ").strip().lower() != "n"
             lenz = self.alchemist.evaluate_lenz_gate(tox, approach_velocity=1.1, can_disengage=can_leave)
-            print(f"\n  [{lenz["mode"]} - Force: {lenz["repulsion_force"]}]")
-            self.slow_print(f"  {lenz["guidance"]}")
+            print(f"\n  [{lenz['mode']} - Force: {lenz['repulsion_force']}]")
+            self.slow_print(f"  {lenz['guidance']}")
 
             if lenz["mode"] == "ALCHEMICAL_CAPTURE":
                 alchemy = self.alchemist.alchemize_friction(tox, reflection_minutes=10)
-                print(f"  Mycelial Alchemy Yield: +{alchemy["goodness_yield"]} clean goodness (Sludge purged: {alchemy["sludge_purged"]})")
+                print(
+                    f"  Mycelial Alchemy Yield: +{alchemy['goodness_yield']} clean goodness "
+                    f"(Sludge purged: {alchemy['sludge_purged']})"
+                )
                 self.mesh.contribute_to_commons(alchemy["goodness_yield"], alk["vfa_acidity_ratio"])
 
         forge = self.shaolin.transmute_pain(pain, breath_quality=8.0, vfa_acidity_ratio=alk["vfa_acidity_ratio"])
-        print(f"\n  [Shaolin Chan-Wu-Yi Forge - {forge["mode"]}]")
-        self.slow_print(f"  {forge["guidance"]}")
+        print(f"\n  [Shaolin Chan-Wu-Yi Forge - {forge['mode']}]")
+        self.slow_print(f"  {forge['guidance']}")
 
     def run_compassion_check(self):
         print("\n" + "-" * 62)
@@ -688,20 +676,22 @@ class ProjectThalamusOS:
 
         res = self.compassion.evaluate_compassion_flow(
             empathic_awareness=0.8,
-            genuine_vulnerability=(vuln or 0.0) / 10.0,
-            coercive_leverage=(coercion or 0.0) / 10.0,
+            genuine_vulnerability=(0.0 if vuln is None else vuln) / 10.0,
+            coercive_leverage=(0.0 if coercion is None else coercion) / 10.0,
             ill_intent_detected=ill,
-            vfa_acidity_ratio=vfa or 0.15,
+            vfa_acidity_ratio=0.15 if vfa is None else vfa,
         )
-        print(f"\n  [{res["empathy_mode"]} -> {res["sympathy_action"]}]")
-        self.slow_print(f"  {res["guidance"]}")
+        print(f"\n  [{res['empathy_mode']} -> {res['sympathy_action']}]")
+        self.slow_print(f"  {res['guidance']}")
 
     def run_signal_hygiene(self):
-        fear = self.ask_float("  Fear/outrage media load today (0-10)", 4.0) or 4.0
-        good = self.ask_float("  Verified good news / bright spots today (0-10)", 6.0) or 6.0
+        fear_in = self.ask_float("  Fear/outrage media load today (0-10)", 4.0)
+        good_in = self.ask_float("  Verified good news / bright spots today (0-10)", 6.0)
+        fear = 4.0 if fear_in is None else fear_in
+        good = 6.0 if good_in is None else good_in
         sig = self.plasticity.filter_sensory_intake(fear, good)
-        print(f"\n  [Thalamic SNR: {sig["thalamic_snr"]} - {sig["signal_state"]}]")
-        self.slow_print(f"  {sig["guidance"]}")
+        print(f"\n  [Thalamic SNR: {sig['thalamic_snr']} - {sig['signal_state']}]")
+        self.slow_print(f"  {sig['guidance']}")
 
     def main_menu(self):
         seal = self.mithril.compute_file_seal(os.path.abspath(__file__))
